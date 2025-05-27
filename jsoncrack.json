@@ -1,0 +1,171 @@
+{
+  "name": "Sanduíche de frango",
+  "category": "breakfast",
+  "image": "saduiche.jpg",
+  "ingredients": [
+    {
+      "ingredient": {
+        "name": "Requeijão"
+      },
+      "quantity": 1.0,
+      "unit": "colheres de sopa"
+    },
+    {
+      "ingredient": {
+        "name": "Cenoura ralada"
+      },
+      "quantity": 1.0
+       ,
+      "unit": "colheres de sopa"
+    },
+    {
+      "ingredient": {
+        "name": "Sal"
+      },
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "ingredient": {
+        "name": "Pimenta do reino"
+      },
+      "quantity": null,
+      "unit": null
+    },
+    {
+      "ingredient": {
+        "name": "Peito de frango temperado e grelhado"
+      },
+      "quantity": 100.0,
+      "unit": "gramas"
+    },
+    {
+      "ingredient": {
+        "name": "Fatias de tomate"
+      },
+      "quantity": null,
+      "unit": null
+    }
+  ],
+  "time": {
+    "value": 7,
+    "unit": "minutos"
+  },
+  "description": "Sanduíche leve e saboroso com frango grelhado.",
+  "steps": [
+    {
+      "number": 1,
+      "instruction": "Reúna todos os ingredientes! Se ainda não tiver o frango pronto, grelhe-o previamente em uma frigideira, sem óleo, até que fique bem cozido e dourado.",
+      "ingredients": [
+        {
+          "ingredient": {
+            "name": "Peito de frango temperado e grelhado"
+          },
+          "quantity": 100.0,
+          "unit": "gramas"
+        },
+        {
+          "ingredient": {
+            "name": "Requeijão"
+          },
+          "quantity": 1.0,
+          "unit": "colheres de sopa"
+        },
+        {
+          "ingredient": {
+            "name": "Cenoura ralada"
+          },
+          "quantity": 1.0,
+          "unit": "colheres de sopa"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "instruction": "Em um processador de alimentos, coloque o queijo cottage, a cenoura ralada, uma pitada de sal e a pimenta-do-reino a gosto. Bata até obter uma mistura homogênea e cremosa.",
+      "ingredients": [
+        {
+          "ingredient": {
+            "name": "Queijo cottage"
+          },
+          "quantity": null,
+          "unit": null
+        },
+        {
+          "ingredient": {
+            "name": "Cenoura ralada"
+          },
+          "quantity": 1.0,
+          "unit": "colheres de sopa"
+        },
+        {
+          "ingredient": {
+            "name": "Sal"
+          },
+          "quantity": null,
+          "unit": null
+        },
+        {
+          "ingredient": {
+            "name": "Pimenta do reino"
+          },
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "instruction": "Pegue as fatias de pão integral e espalhe uma camada generosa dessa pastinha sobre cada uma delas.",
+      "ingredients": [
+        {
+          "ingredient": {
+            "name": "Fatias de pão integral"
+          },
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "instruction": "Sobre uma das fatias, disponha folhas de alface, o frango grelhado e as fatias de tomate.",
+      "ingredients": [
+        {
+          "ingredient": {
+            "name": "Folhas de alface"
+          },
+          "quantity": null,
+          "unit": null
+        },
+        {
+          "ingredient": {
+            "name": "Peito de frango temperado e grelhado"
+          },
+          "quantity": 100.0,
+          "unit": "gramas"
+        },
+        {
+          "ingredient": {
+            "name": "Fatias de tomate"
+          },
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "instruction": "Coloque a outra fatia de pão por cima, pressionando levemente para fechar e para que tudo fique bem firme. Sirva e aproveite! Se preferir, corte ao meio para facilitar na hora de comer.",
+      "ingredients": [
+        {
+          "ingredient": {
+            "name": "Fatias de pão integral"
+          },
+          "quantity": null,
+          "unit": null
+        }
+      ]
+    }
+  ]
+}
