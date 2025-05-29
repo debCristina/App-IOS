@@ -54,6 +54,4 @@ struct CardCategoryRecipesView: View {
     }
 }
 
-#Preview {
-    
-}
+

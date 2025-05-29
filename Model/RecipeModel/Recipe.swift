@@ -10,11 +10,11 @@ import Foundation
 struct Recipe: Identifiable{
     var id = UUID()
     let name: String
+    let category : CategoryType
     let image: String
     let ingredients: [RecipeIngredient]
     let time: Time
     let description: String
     let steps: [RecipeStep]
     var isFavorite: Bool = false
-    
 }

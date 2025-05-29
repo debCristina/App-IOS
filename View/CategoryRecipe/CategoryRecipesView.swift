@@ -8,39 +8,42 @@
 import SwiftUI
 
 struct CategoryRecipesView: View {
-    let category: Category
+    let category: CategoryType
+    let recipes: [Recipe]
         
     var body: some View {
         ScrollView {
             LazyVStack() {
-                ForEach(category.recipes) { recipe in
-                    NavigationLink(destination: RecipeDetailView(recipe: recipe)
-                        .navigationBarBackButtonHidden())
-                    {
-                        CardCategoryRecipesView(recipe: recipe)
-                            .padding(.horizontal)
-                    }
+                ForEach(recipes) { recipe in
+//                    NavigationLink(destination: RecipeDetailView(recipe: recipe)
+//                        .navigationBarBackButtonHidden())
+//                    {
+//                        CardCategoryRecipesView(recipe: recipe)
+//                            .padding(.horizontal)
+//                    }
                 }
             }
         }
         .scrollIndicators(.hidden)
-        .navigationTitle(category.name)
+        .navigationTitle(category.displayName)
         .navigationBarTitleDisplayMode(.automatic)
     }
 }
 
 #Preview {
-    let ingredient1 = Ingredient(name: "Farinha")
-    let ingredient2 = Ingredient(name: "Açúcar")
-    
-    let ri1 = RecipeIngredient(ingredient: ingredient1, quantity: 1.0, unit: .tablespoons)
-    let ri2 = RecipeIngredient(ingredient: ingredient2, quantity: 1.0, unit: .teaspoons)
-    
-    let ingredientsList = [ri1, ri2]
-    
     CategoryRecipesView(
-        
-        category: Category(name: "Almoço", recipes: [Recipe(name: "Strogonoff", image: "strogonoff", ingredients: ingredientsList, time: Time(value: 15, unit: .minutes), description: "Strogonoff de frango", steps: [])])
+        category: .lunch,
+        recipes: [
+            Recipe(
+                name: "Strogonoff",
+                category: .lunch,
+                image: "strogonoff",
+                ingredients: [],
+                time: Time(value: 20, unit: .minutes),
+                description: "Delicioso strogonoff de frango.",
+                steps: [],
+                isFavorite: true
+            )
+        ]
     )
-    
 }

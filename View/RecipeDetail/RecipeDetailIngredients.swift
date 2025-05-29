@@ -80,6 +80,7 @@ struct RecipeDetailIngredients: View {
         recipe: Recipe(
             id: UUID(),
             name: "Strogonoff",
+            category: .lunch,
             image: "strogonoff",
             ingredients: ingredients,
             time: Time(value: 10, unit: .minutes),

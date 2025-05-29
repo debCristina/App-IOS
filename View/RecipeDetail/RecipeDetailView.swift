@@ -11,8 +11,10 @@ struct RecipeDetailView: View {
     @State private var selectedSection = 0
     @Environment(\.dismiss) private var dismiss
     @State private var showingSheet = false
-
+    
     var recipe : Recipe
+    
+    @EnvironmentObject var favoritesManager : FavoritesManager
     
     var body: some View {
         ScrollView{
@@ -37,18 +39,19 @@ struct RecipeDetailView: View {
                                 Spacer()
                                 
                                 Button(action:{
+                                    favoritesManager.toggleFavorite(recipe)
                                 }){
-                                    Image(systemName: "heart.fill")
+                                    Image(systemName: favoritesManager.isFavorite(recipe) ? "heart.fill" : "heart.fill")
+                                        .foregroundColor(favoritesManager.isFavorite(recipe) ? .black : .white)
                                         .bold()
                                         .frame(width: 34, height: 34)
                                         .background(Color.accent)
-                                        .foregroundStyle(.white)
                                         .clipShape(Circle())
                                 }
                                 
                                 Button(action:{
                                     showingSheet.toggle()
-
+                                    
                                 }){
                                     Image(systemName: "lightbulb.max")
                                         .bold()
@@ -76,9 +79,5 @@ struct RecipeDetailView: View {
                 }
             }
         }.ignoresSafeArea(edges: .top)
-        
-        
     }
 }
-
-

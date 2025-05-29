@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomeCardsView: View {
     let recipe: Recipe
-    let isFavorite: Bool
-    
+    @EnvironmentObject var favoriteManager: FavoritesManager
     var body: some View {
         VStack(alignment: .leading){
             Image(recipe.image)
@@ -33,9 +32,11 @@ struct HomeCardsView: View {
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundStyle(isFavorite ? Color("AccentColor") : Color("AccentColor"))
+                Button(action: {
+                    favoriteManager.toggleFavorite(recipe)
+                }) {
+                    Image(systemName: favoriteManager.isFavorite(recipe) ? "heart.fill" : "heart")
+                        .foregroundStyle(favoriteManager.isFavorite(recipe) ? Color("AccentColor") : Color("AccentColor"))
                         .font(.custom("Baloo2-Regular", size: 16))
                 }
             }
@@ -61,13 +62,14 @@ struct HomeCardsView: View {
         recipe: Recipe(
             id: UUID(),
             name: "Strogonoff",
+            category: .lunch,
             image: "strogonoff",
             ingredients: [],
             time: Time(value: 10, unit: .minutes),
             description: "Delicioso sanduíche natural de frango.",
             steps: [],
             isFavorite: true
-        ),
-        isFavorite: true
-    )
+        )
+    )        .environmentObject(FavoritesManager())
+
 }

@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct PrimeiroApp: App {
+    @StateObject private var favoritesManager = FavoritesManager()
+
+
     init() {
         let solidAppearance = UINavigationBarAppearance()
         solidAppearance.configureWithDefaultBackground()
@@ -43,8 +46,11 @@ struct PrimeiroApp: App {
     }
     
     var body: some Scene {
+
         WindowGroup {
             ContentView()
+                .environmentObject(favoritesManager)
+
         }
     }
 }
