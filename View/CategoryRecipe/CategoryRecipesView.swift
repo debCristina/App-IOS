@@ -15,12 +15,12 @@ struct CategoryRecipesView: View {
         ScrollView {
             LazyVStack() {
                 ForEach(recipes) { recipe in
-//                    NavigationLink(destination: RecipeDetailView(recipe: recipe)
-//                        .navigationBarBackButtonHidden())
-//                    {
-//                        CardCategoryRecipesView(recipe: recipe)
-//                            .padding(.horizontal)
-//                    }
+                    NavigationLink(destination: RecipeDetailView(recipe: recipe)
+                        .navigationBarBackButtonHidden())
+                    {
+                        CardCategoryRecipesView(recipe: recipe)
+                            .padding(.horizontal)
+                    }
                 }
             }
         }

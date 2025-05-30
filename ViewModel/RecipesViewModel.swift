@@ -27,19 +27,10 @@ class RecipesViewModel: ObservableObject{
         
         let recipe1 = Recipe(name: "Strogonoff", category: .lunch ,image: "strogonoff", ingredients: ingredientsList, time: Time(value: 15, unit: .minutes), description: "Strogonoff de frango", steps: [RecipeStep(number: 1, instruction: "Misture os ingredientes secos.", ingredients: ingredientsList)])
         let recipe2 = Recipe(name: "Strogonoff", category: .lunch, image: "strogonoff", ingredients: ingredientsList, time: Time(value: 15, unit: .minutes), description: "Strogonoff de frango", steps: [])
-        let recipe3 = Recipe(name: "Strogonoff", category: .dessert, image: "strogonoff", ingredients: ingredientsList, time: Time(value: 15, unit: .minutes), description: "Strogonoff de frango", steps: [])
+        let recipe3 = Recipe(name: "Arroz Doce", category: .dessert, image: "panqueca", ingredients: ingredientsList, time: Time(value: 15, unit: .minutes), description: "Strogonoff de frango", steps: [])
         
         self.recipes = [recipe1, recipe2, recipe3]
         
     }
     
-    func toggleFavorite(_ recipe: Recipe) {
-        if let index = recipes.firstIndex(where: { $0.id == recipe.id }) {
-            recipes[index].isFavorite.toggle()
-        }
-    }
-    
-    func isFavorite(_ recipe: Recipe) -> Bool {
-        recipes.first(where: { $0.id == recipe.id })?.isFavorite == true
-    }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     var body: some View {
         TabView {
             NavigationStack {
@@ -30,4 +31,8 @@ struct TabBarView: View {
 
 #Preview {
     TabBarView()
+        .environmentObject(FavoritesManager())
+        .environmentObject(RecipesViewModel())
+
+        
 }

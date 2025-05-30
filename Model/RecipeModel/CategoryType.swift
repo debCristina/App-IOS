@@ -8,6 +8,7 @@
 import Foundation
 
 enum CategoryType: String, CaseIterable, Identifiable {
+    case all
     case breakfast
     case lunch
     case dessert
@@ -18,6 +19,7 @@ enum CategoryType: String, CaseIterable, Identifiable {
     
     var displayName: String {
         switch self {
+        case .all: return "Todos"
         case .breakfast: return "Café da Manhã"
         case .lunch: return "Almoço"
         case .dessert: return "Sobremesa"

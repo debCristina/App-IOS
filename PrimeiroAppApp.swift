@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct PrimeiroApp: App {
     @StateObject private var favoritesManager = FavoritesManager()
-
+    @StateObject var recipesViewModel =  RecipesViewModel()
 
     init() {
         let solidAppearance = UINavigationBarAppearance()
@@ -50,6 +50,7 @@ struct PrimeiroApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(favoritesManager)
+                .environmentObject(recipesViewModel)
 
         }
     }
