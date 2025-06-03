@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailIngredients: View {
+    @EnvironmentObject var shoppingViewModel: ShoppingListViewModel
     let recipe: Recipe
     
     var body: some View {
@@ -43,24 +44,43 @@ struct RecipeDetailIngredients: View {
                     Divider()
                 }
                 
-                VStack {
-                    Button {
-                    } label: {
-                        Label("Criar lista de compras", systemImage: "text.badge.plus")
-                            .font(.custom("Baloo2-SemiBold", size: 16))
-                            .padding()
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.accent)
-                            )
-                            .foregroundStyle(Color("TextColor"))
-                    }
-                }.padding(.top)
-                    .padding(.bottom)
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .padding(.top)
+//                VStack {
+//                    Button {
+//                        let items = recipe.ingredients.map { ri in
+//                            ShoppingItem(
+//                                name: ri.ingredient.name,
+//                                quantity: Int(ri.quantity ?? 1),
+//                                medida: ri.unit?.rawValue ?? "",
+//                                valorUnitario: 0.0,
+//                                isChecked: false
+//                            )
+//                        }
+//
+//                        let novaLista = ShoppingList(
+//                            title: recipe.name,
+//                            itemCount: items.reduce(0) { $0 + $1.quantity },
+//                            items: items,
+//                            totalLista: 0.0
+//                        )
+//
+//                        shoppingViewModel.addList(novaLista)
+//                    } label: {
+//                        Label("Criar lista de compras", systemImage: "text.badge.plus")
+//                            .font(.custom("Baloo2-SemiBold", size: 16))
+//                            .padding()
+//                            .frame(maxWidth: .infinity, maxHeight: 40)
+//                            .background(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .fill(Color.accent)
+//                            )
+//                            .foregroundStyle(Color("TextColor"))
+//                    }
+                
+//                }.padding(.top)
+//                    .padding(.bottom)
+//                    .frame(maxWidth: .infinity)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.top)
             }
             .padding(.horizontal)
         }.padding(.top)

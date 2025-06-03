@@ -10,10 +10,20 @@ import SwiftData
 
 @main
 struct PrimeiroApp: App {
-    @StateObject private var favoritesManager = FavoritesManager()
-    @StateObject var recipesViewModel =  RecipesViewModel()
-
+    @StateObject var shoppingViewModel = ShoppingListViewModel()
+    @StateObject var favoritesManager = FavoritesManager()
+    @StateObject var recipesViewModel = RecipesViewModel()
     init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        appearance.backgroundColor = UIColor.clear
+        
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
         let solidAppearance = UINavigationBarAppearance()
         solidAppearance.configureWithDefaultBackground()
         solidAppearance.titleTextAttributes = [
@@ -49,6 +59,7 @@ struct PrimeiroApp: App {
 
         WindowGroup {
             ContentView()
+                .environmentObject(shoppingViewModel)
                 .environmentObject(favoritesManager)
                 .environmentObject(recipesViewModel)
 

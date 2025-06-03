@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeCardsView: View {
     let recipe: Recipe
     @EnvironmentObject var favoriteManager: FavoritesManager
+
     var body: some View {
         VStack(alignment: .leading){
             Image(recipe.image)
@@ -57,19 +58,4 @@ struct HomeCardsView: View {
     }
 }
 
-#Preview {
-    HomeCardsView(
-        recipe: Recipe(
-            id: UUID(),
-            name: "Strogonoff",
-            category: .lunch,
-            image: "strogonoff",
-            ingredients: [],
-            time: Time(value: 10, unit: .minutes),
-            description: "Delicioso sanduíche natural de frango.",
-            steps: [],
-            isFavorite: true
-        )
-    )        .environmentObject(FavoritesManager())
 
-}

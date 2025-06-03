@@ -8,71 +8,85 @@
 import SwiftUI
 
 struct ShoppingListView: View {
-    let lists: [ShoppingList] = [
-        ShoppingList(
-            title: "Mercado",
-            itemCount: 2,
-            items: [
-                ShoppingItem(name: "Ovo", quantity: 12, medida: "un", valorUnitário: 0.50, isChecked: false),
-                ShoppingItem(name: "Leite", quantity: 2, medida: "L", valorUnitário: 3.80, isChecked: true)
-            ],
-            totalLista: 0.00
-        )
-        ,
-        ShoppingList(
-            title: "Mercado",
-            itemCount: 2,
-            items: [
-                ShoppingItem(name: "Ovo", quantity: 12, medida: "un", valorUnitário: 0.50, isChecked: false),
-                ShoppingItem(name: "Leite", quantity: 2, medida: "L", valorUnitário: 3.80, isChecked: true)
-            ],
-            totalLista: 0.00
-        ),
-        ShoppingList(
-            title: "Mercado",
-            itemCount: 2,
-            items: [
-                ShoppingItem(name: "Ovo", quantity: 12, medida: "un", valorUnitário: 0.50, isChecked: false),
-                ShoppingItem(name: "Leite", quantity: 2, medida: "L", valorUnitário: 3.80, isChecked: true)
-            ],
-            totalLista: 0.00
-        )
-    ]
+    @EnvironmentObject var shoppingViewModel: ShoppingListViewModel
     @State private var showingAddListSheet = false
-
+    
+    @State private var searchText = ""
+    
+    var reversedLists: [ShoppingList] {
+        shoppingViewModel.lists.reversed()
+    }
+    
+    var filteredLists: [ShoppingList] {
+        if searchText.isEmpty {
+            return reversedLists
+        } else {
+            return reversedLists.filter { list in
+                list.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
+    
     var body: some View {
-        
         ScrollView {
-            VStack(spacing: 16) {
-                ForEach(lists) { list in
-                    NavigationLink(destination: ShoppingListDetailView(list: list)) {
-                        
-                        CardListView(title: list.title, itemCount: list.itemCount)
-                    }
+            if shoppingViewModel.lists.isEmpty {
+                VStack() {
+                    Image(systemName: "tray.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(.gray.opacity(0.5))
                     
-                }
-            }
-            .padding()
-        }.navigationTitle("Minhas Listas")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button {
-                        showingAddListSheet = true
-                    } label: {
-                        Image(systemName: "plus")
+                    Text("Nenhuma lista criada ainda.\nToque em + para adicionar.")
+                        .font(.custom("Baloo2-Regular", size: 18))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
+                        .padding(.vertical, 32)
+                }.frame(maxHeight: .infinity)
+                
+            } else {
+                VStack {
+                    ForEach(filteredLists, id: \.id) { list in
+                        NavigationLink(destination: ShoppingListDetailView(viewModel: shoppingViewModel, list: list)) {
+                            CardListView(
+                                title: list.title,
+                                itemCount: list.itemCount,
+                                onDelete: {
+                                    withAnimation {
+                                        shoppingViewModel.deleteList(list)
+                                    }
+                                }
+                            )
+                        }
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .top),
+                            removal: .move(edge: .leading)
+                                .combined(with: .scale(scale: 0, anchor: .topLeading))
+                                .combined(with: .opacity)
+                        ))
                     }
                 }
+                .animation(.easeInOut, value: shoppingViewModel.lists)
             }
-            .sheet(isPresented: $showingAddListSheet) {
-                AddListView()
-                    .presentationDetents([.medium])
-
+        }
+        .navigationTitle("Minhas Listas")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showingAddListSheet = true
+                } label: {
+                    Image(systemName: "plus")
+                }
             }
-            
+        }
+        .searchable(text: $searchText, prompt: "Buscar lista")
+        .sheet(isPresented: $showingAddListSheet) {
+            AddListView { newList in
+                shoppingViewModel.addList(newList)
+            }
+        }
     }
 }
+        
 
-#Preview {
-    ShoppingListView()
-}

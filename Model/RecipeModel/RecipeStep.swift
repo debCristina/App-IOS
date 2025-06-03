@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeStep: Identifiable{
+struct RecipeStep: Identifiable, Equatable, Hashable {
     var id = UUID()
     let number: Int
     let instruction: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Recipe: Identifiable{
+struct Recipe: Identifiable, Hashable, Equatable {
     var id = UUID()
     let name: String
     let category : CategoryType

@@ -10,7 +10,8 @@ import SwiftUI
 struct AddListView: View {
     @State private var nome = ""
     @Environment(\.dismiss) var dismiss
-
+    var onAdd: (ShoppingList) -> Void
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -30,16 +31,19 @@ struct AddListView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Salvar") {
+                        let novaLista = ShoppingList(
+                            title: nome,
+                            itemCount: 0,
+                            items: [],
+                            totalLista: 0.0
+                        )
+                        onAdd(novaLista)
                         dismiss()
                     }
                     .foregroundColor(.orange)
                 }
             }
-            
         }
+        .presentationDetents([.medium])
     }
-}
-
-#Preview {
-    AddListView()
 }

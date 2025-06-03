@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ItemToEdit: View {
-    @State var item: ShoppingItem
+    @Binding var item: ShoppingItem
     @Environment(\.dismiss) var dismiss
-
-
+    
+    
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     TextField("Nome", text: $item.name)
-//                    TextField("Quantidade", value: $item.quantity)
-//                        .keyboardType(.numberPad)
+                    TextField("Quantidade", value: $item.quantity, format: .number.precision(.integerLength(3)))
+                        .keyboardType(.numberPad)
                     TextField("Medida", text: $item.medida)
-//                    TextField("Valor unitário", value: $item.valorUnitario, format: .number)
-//                        .keyboardType(.decimalPad)
+                    TextField("Valor unitário", value: $item.valorUnitario, format: .number.precision(.fractionLength(2)))
+                        .keyboardType(.decimalPad)
                 }
             }
             .background(Color.white)
@@ -44,9 +44,4 @@ struct ItemToEdit: View {
             
         }
     }
-}
-
-#Preview {
-    let mockItem = ShoppingItem(name: "Ovo", quantity: 12, medida: "un", valorUnitário: 0.50, isChecked: false)
-    return ItemToEdit(item: mockItem)
 }

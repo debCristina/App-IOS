@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeIngredient: Identifiable{
+struct RecipeIngredient: Identifiable, Equatable, Hashable{
     var id: UUID { ingredient.id }
     let ingredient : Ingredient
     let quantity: Double?

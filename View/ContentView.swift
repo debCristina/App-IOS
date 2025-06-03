@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     var body: some View {
-
+        
         TabBarView()
+           
     }
 }
 
@@ -19,5 +20,5 @@ struct ContentView: View {
     ContentView()
         .environmentObject(FavoritesManager())
         .environmentObject(RecipesViewModel())
-
+        .environmentObject(ShoppingListViewModel())
 }

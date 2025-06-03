@@ -10,7 +10,9 @@ import Foundation
 struct ShoppingList: Identifiable, Hashable {
     let id: UUID = UUID()
     var title: String
-    let itemCount: Int
+    var itemCount: Int
     var items: [ShoppingItem]
     var totalLista : Double
+    
+    
 }

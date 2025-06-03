@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Time{
+struct Time: Equatable, Hashable{
     let value: Int
     let unit: TimeUnit
 }

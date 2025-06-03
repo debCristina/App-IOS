@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeCategoriesView: View {
     @StateObject private var viewModel = RecipesViewModel()
     @EnvironmentObject var favoritesManager: FavoritesManager
+
     
     var body: some View {
         ScrollView {
@@ -48,6 +49,7 @@ struct HomeCategoriesView: View {
                                             HomeCardsView(recipe: recipe)
                                             .padding(5)
                                         }
+                                        
                                     }}
                             }
                         }
@@ -60,8 +62,4 @@ struct HomeCategoriesView: View {
         }
     }
 }
-#Preview {
-    HomeCategoriesView()
-        .environmentObject(FavoritesManager())
 
-}

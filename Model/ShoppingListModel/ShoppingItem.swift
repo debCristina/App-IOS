@@ -12,6 +12,6 @@ struct ShoppingItem: Identifiable, Hashable {
     var name: String
     var quantity: Int
     var medida: String
-    var valorUnitário: Double
+    var valorUnitario: Double
     var isChecked: Bool
 }

@@ -14,6 +14,8 @@ struct AddItemView: View {
     @State private var medida = ""
     @State private var valorUnitario = ""
     
+    var onAdd: (ShoppingItem) -> Void
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -38,16 +40,26 @@ struct AddItemView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Salvar") {
+                        let valorFormatado = valorUnitario.replacingOccurrences(of: ",", with: ".")
+                        
+                        let novoItem = ShoppingItem(
+                            name: nome,
+                            quantity: Int(quantidade) ?? 0,
+                            medida: medida,
+                            valorUnitario: Double(valorFormatado) ?? 0.0,
+                            isChecked: false
+                        )
+                        onAdd(novoItem)
                         dismiss()
                     }
                     .foregroundColor(.orange)
                 }
             }
-
+            
         }
     }
 }
 
 #Preview {
-    AddItemView()
+    AddItemView { _ in }
 }
